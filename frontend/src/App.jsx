@@ -1,8 +1,19 @@
+import { Container } from "react-bootstrap";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Movies from "./pages/movies";
+
 const App = () => {
   return (
-    <div>
-      <h1>Welcome to Movie Collection 2024</h1>
-    </div>
+    <>
+      <Header />
+      <main className="py-3">
+        <Container>
+          <Movies />
+        </Container>
+      </main>
+      <Footer />
+    </>
   );
 };
 export default App;
