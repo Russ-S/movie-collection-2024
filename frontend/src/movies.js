@@ -36,7 +36,7 @@ const movies = [
   {
     _id: "3",
     title: "Julie & Julia",
-    image: "/images/julie&julia.jpg",
+    image: "/images/Julie&Julia.jpg",
     director: "Nora Ephron",
     writer: "Nora Ephron (screenplay), Julie Powell (book)",
     cast: "Amy Adams, Meryl Streep, Stanley Tucci, Chris Messina",
@@ -53,7 +53,7 @@ const movies = [
   {
     _id: "4",
     title: "Paul Blart: Mall Cop",
-    image: "/images/aul_Blart_Mall_Cop.jpg",
+    image: "/images/Paul_Blart_Mall_Cop.jpg",
     director: "Steve Carr",
     writer: "Kevin James, Nick Bakay",
     cast: "Kevin James, Keir O'Donnell and Jayma Mays",
@@ -81,13 +81,13 @@ const movies = [
     rating: "R",
     value: "6.99",
     description:
-      "Two-time Academy Award winner Meryl Streep, Steve Martin and Alec Baldwin star in this hilarious look at marriage, divorce and everything in between. Jane (Streep) has three grown kids, a thriving Santa Barbara bakery and an amicable relationship with her ex-husband, Jake (Baldwin). Now, a decade after their divorce, an innocent dinner between Jane and Jake turns into the unimaginable - an affair. Caught in the middle of their rekindled romance are Jake's young wife and Adam (MArtin), a recently divorced architect who starts to fall for Jane. Could love be sweeter the second time around? It's.......complicated!",
+      "Two-time Academy Award winner Meryl Streep, Steve Martin and Alec Baldwin star in this hilarious look at marriage, divorce and everything in between. Jane (Streep) has three grown kids, a thriving Santa Barbara bakery and an amicable relationship with her ex-husband, Jake (Baldwin). Now, a decade after their divorce, an innocent dinner between Jane and Jake turns into the unimaginable - an affair. Caught in the middle of their rekindled romance are Jake's young wife and Adam (Martin), a recently divorced architect who starts to fall for Jane. Could love be sweeter the second time around? It's.......complicated!",
     location: "Fallston, MD",
   },
   {
     _id: "6",
     title: "Windtalkers",
-    image: "/images/windtalkers",
+    image: "/images/Windtalkers.jpg",
     director: "John Woo",
     writer: "John Woo",
     cast: "Nicholas Cage, Adam Beach, Christian Slater",
