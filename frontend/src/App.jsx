@@ -1,16 +1,17 @@
-// import { Container } from "react-bootstrap";
-import Header from "./components/Header";
+// import Header from "./components/Header";
+import Navigation from "./pages/Auth/Navigation";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer";
-import Movies from "./pages/Movies";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <Header />
+      <ToastContainer />
+      <Navigation />
       <main className="py-3">
-        <div className="container">
-          <Movies />
-        </div>
+        <Outlet />
       </main>
       <Footer />
     </>
