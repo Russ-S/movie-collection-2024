@@ -33,7 +33,21 @@ const createGenre = asyncHandler(async (req, res) => {
 // @route   GET /api/genre
 // @access  Public
 const getGenre = asyncHandler(async (req, res) => {
-  const genre = await Genre.find({}).sort({ name: 1 });
+  const pageSize = 12;
+  const page = Number(req.query.pageNumber) || 1;
+  const count = await Genre.countDocuments();
+
+  const genre = await Genre.find({})
+    .sort({ name: 1 })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  res.json({ genre, page, pages: Math.ceil(count / pageSize) });
+});
+
+const fetchGenre = asyncHandler(async (req, res) => {
+  const genre = await Genre.find({}).sort({
+    name: 1,
+  });
   res.json(genre);
 });
 
@@ -85,4 +99,11 @@ const deleteGenre = asyncHandler(async (req, res) => {
   }
 });
 
-export { createGenre, getGenre, getGenreById, updateGenre, deleteGenre };
+export {
+  createGenre,
+  getGenre,
+  fetchGenre,
+  getGenreById,
+  updateGenre,
+  deleteGenre,
+};

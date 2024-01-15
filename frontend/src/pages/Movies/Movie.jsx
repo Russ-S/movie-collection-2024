@@ -28,7 +28,7 @@ const Movie = () => {
         <Row>
           <Col lg={3} md={12} className="text-center">
             <Image
-              src={movie.image}
+              src={`/images/${movie.image}`}
               alt={movie.title}
               fluid
               style={{

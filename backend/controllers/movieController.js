@@ -72,8 +72,15 @@ const createMovie = asyncHandler(async (req, res) => {
 // @route   GET /api/movies
 // @access   Public
 const getMovies = asyncHandler(async (req, res) => {
-  const movies = await Movie.find({}).sort({ title: 1 });
-  res.json(movies);
+  // const pageSize = 6;
+  // const page = Number(req.query.pageNumber) || 1;
+  // const count = await Movie.countDocuments();
+
+  const movie = await Movie.find({}).sort({ title: 1 });
+  // .limit(pageSize)
+  // .skip(pageSize * (page - 1));
+  // res.json({ movie, page, pages: Math.ceil(count / pageSize) });
+  res.json(movie);
 });
 
 // @desc    fetch a movie
@@ -108,7 +115,6 @@ const updateMovie = asyncHandler(async (req, res) => {
   } = req.body;
 
   const movie = await Movie.findById(req.params.id);
-  console.log(movie);
 
   if (movie) {
     movie.title = title || movie.title;
@@ -148,4 +154,30 @@ const deleteMovie = asyncHandler(async (req, res) => {
   }
 });
 
-export { createMovie, getMovies, getMovieById, updateMovie, deleteMovie };
+const filterMovies = asyncHandler(async (req, res) => {
+  try {
+    const { checked, radio } = req.body;
+
+    let args = {};
+    if (checked.length > 0) args.media = checked;
+    if (radio.length) args.genre = { $gte: radio[0], $lte: radio[1] };
+
+    const movies = await Movie.find(args).sort({
+      title: 1,
+    });
+    res.json(movies);
+    console.log(movies);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
+});
+
+export {
+  createMovie,
+  getMovies,
+  getMovieById,
+  updateMovie,
+  deleteMovie,
+  filterMovies,
+};

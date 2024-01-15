@@ -1,55 +1,75 @@
-import { MOVIE_URL } from "../constants";
 import { apiSlice } from "./apiSlice";
+import { MOVIES_URL } from "../constants";
 
 export const movieApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getMovies: builder.query({
-      query: ({ keyword }) => ({
-        url: `${MOVIE_URL}`,
-        params: { keyword },
+    createMovie: builder.mutation({
+      query: (movie) => ({
+        url: MOVIES_URL,
+        method: "POST",
+        body: { ...movie },
       }),
-      keepUnusedDataFor: 5,
+    }),
+    fetchMovies: builder.query({
+      query: () => `${MOVIES_URL}`,
+    }),
+
+    getMovies: builder.query({
+      query: ({ pageNumber }) => ({
+        url: MOVIES_URL,
+        params: {
+          pageNumber,
+        },
+      }),
       providesTags: ["Movies"],
+      keepUnusedDataFor: 5,
     }),
 
     getMovieById: builder.query({
-      query: (movieId) => `${MOVIE_URL}/${movieId}`,
+      query: (movieId) => `${MOVIES_URL}/${movieId}`,
       providesTags: (result, error, movieId) => [
         { type: "Movie", id: movieId },
       ],
     }),
 
     allMovies: builder.query({
-      query: () => `${MOVIE_URL}/allMovies`,
+      query: () => `${MOVIES_URL}/allMovies`,
     }),
 
     getMovieDetails: builder.query({
       query: (movieId) => ({
-        url: `${MOVIE_URL}/${movieId}`,
+        url: `${MOVIES_URL}/${movieId}`,
       }),
       keepUnusedDataFor: 5,
     }),
 
-    createMovie: builder.mutation({
-      query: (movieData) => ({
-        url: `${MOVIE_URL}`,
-        method: "POST",
-        body: movieData,
-      }),
-      invalidatesTags: ["Movie"],
-    }),
+    // createMovie: builder.mutation({
+    //   query: (movieData) => ({
+    //     url: `${MOVIES_URL}`,
+    //     method: "POST",
+    //     body: movieData,
+    //   }),
+    //   invalidatesTags: ["Movie"],
+    // }),
 
     updateMovie: builder.mutation({
-      query: ({ movieId, formData }) => ({
-        url: `${MOVIE_URL}/${movieId}`,
+      query: (data) => ({
+        url: `${MOVIES_URL}/${data.movieId}`,
         method: "PUT",
-        body: formData,
+        body: data,
+      }),
+    }),
+    editMovie: builder.mutation({
+      query: (movie) => ({
+        url: `${MOVIES_URL}/${movie.id}`,
+        method: "PATCH",
+        body: movie,
       }),
     }),
 
     deleteMovie: builder.mutation({
       query: (movieId) => ({
-        url: `${MOVIE_URL}/${movieId}`,
+        url: `${MOVIES_URL}/${movieId}`,
         method: "DELETE",
       }),
       providesTags: ["Movie"],
@@ -57,7 +77,7 @@ export const movieApiSlice = apiSlice.injectEndpoints({
 
     getFilteredMovies: builder.query({
       query: ({ checked, radio }) => ({
-        url: `${MOVIE_URL}/filtered-movies`,
+        url: `${MOVIES_URL}/filtered-movies`,
         method: "POST",
         body: { checked, radio },
       }),
@@ -67,6 +87,7 @@ export const movieApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetMovieByIdQuery,
+  useFetchMoviesQuery,
   useGetMoviesQuery,
   useGetMovieDetailsQuery,
   useAllMoviesQuery,
@@ -74,4 +95,5 @@ export const {
   useUpdateMovieMutation,
   useDeleteMovieMutation,
   useGetFilteredMoviesQuery,
+  useEditMovieMutation,
 } = movieApiSlice;

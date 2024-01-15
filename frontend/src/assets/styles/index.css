@@ -151,6 +151,31 @@ main {
   margin-top: 50px;
   border-radius: 10px;
 }
+
+/* Form styles */
+.loginForm,
+.registerForm {
+  padding: 10px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.loginForm {
+  margin-top: 100px;
+}
+.registerForm {
+  margin-top: 75px;
+}
+.profileForm {
+  margin-top: 75px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.propertyList {
+  padding: 10px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
 .borderWhite {
   border: 1px solid #fff;
 }

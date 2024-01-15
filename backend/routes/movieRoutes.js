@@ -6,9 +6,12 @@ import {
   getMovieById,
   updateMovie,
   deleteMovie,
+  filterMovies,
 } from "../controllers/movieController.js";
 
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
+
+router.use(express.json());
 
 router
   .route("/")
@@ -19,5 +22,7 @@ router
   .get(getMovieById)
   .put(authenticate, authorizeAdmin, updateMovie)
   .delete(authenticate, authorizeAdmin, deleteMovie);
+
+router.route("/filtered-movies").post(filterMovies);
 
 export default router;
