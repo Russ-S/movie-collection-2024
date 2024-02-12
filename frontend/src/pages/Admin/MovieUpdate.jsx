@@ -44,7 +44,7 @@ const MovieUpdate = () => {
       setMedia(movie.media);
       setGenre(movie.genre);
       setRating(movie.rating);
-      setValue(movie.value);
+      setValue(movie.value.toFixed(2));
       setDescription(movie.description);
       setLocation(movie.location);
     }

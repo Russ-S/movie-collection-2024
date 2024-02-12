@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/auth/authSlice";
 import logo from "../../assets/logo.png";
+import MovieSearchForm from "../../components/MovieSearchForm";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -37,6 +38,10 @@ const Navigation = () => {
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basoc=navbar-nav">
+          <div className="d-flex flex-grow-1 px-3">
+            <MovieSearchForm />
+          </div>
+
           <Nav className="ms-auto pe-5">
             {userInfo ? (
               <NavDropdown title={userInfo.username} id="username">

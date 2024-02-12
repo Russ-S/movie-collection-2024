@@ -7,15 +7,17 @@ const MovieCard = ({ movie }) => {
         <div className="card-details">
           <section className="card-title">{movie.title}</section>
           <section className="card-year">
-            <div>Year: {movie.year}</div>
-            <div>Rating: {movie.rating}</div>
+            <div className="d-flex justify-content-between">
+              <span>Year: {movie.year}</span>
+              <span>Rating: {movie.rating}</span>
+            </div>
           </section>
           <div className="cardFooter">
             <div className="bg-warning d-flex justify-content-between px-2">
-              <span className="pull-left">
+              <span>
                 <strong>{movie.media}</strong>
               </span>
-              <span className="pull-right">
+              <span>
                 <strong>{movie.genre}</strong>
               </span>
             </div>

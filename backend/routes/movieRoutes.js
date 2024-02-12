@@ -7,6 +7,7 @@ import {
   updateMovie,
   deleteMovie,
   filterMovies,
+  fetchMovies,
 } from "../controllers/movieController.js";
 
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
@@ -17,6 +18,7 @@ router
   .route("/")
   .get(getMovies)
   .post(authenticate, authorizeAdmin, createMovie);
+router.route("/result").get(fetchMovies);
 router
   .route("/:id")
   .get(getMovieById)

@@ -173,6 +173,34 @@ const filterMovies = asyncHandler(async (req, res) => {
   }
 });
 
+const fetchMovies = async (req, res, next) => {
+  try {
+    const limit = parseInt(req.query.limit) || 12;
+    const startIndex = parseInt(req.query.startIndex) || 0;
+
+    const searchTerm = req.query.searchTerm || "";
+
+    const movies = await Movie.find({
+      $or: [
+        { title: { $regex: searchTerm, $options: "i" } },
+        { director: { $regex: searchTerm, $options: "i" } },
+        { writer: { $regex: searchTerm, $options: "i" } },
+        { cast: { $regex: searchTerm, $options: "i" } },
+        { location: { $regex: searchTerm, $options: "i" } },
+      ],
+    })
+      .sort({
+        title: 1,
+      })
+      .limit(limit)
+      .skip(startIndex);
+
+    return res.status(200).json(movies);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export {
   createMovie,
   getMovies,
@@ -180,4 +208,5 @@ export {
   updateMovie,
   deleteMovie,
   filterMovies,
+  fetchMovies,
 };

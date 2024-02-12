@@ -40,6 +40,7 @@ import GenreUpdate from "./pages/Admin/GenreUpdate.jsx";
 
 import UserList from "./pages/Admin/UserList.jsx";
 import UserUpdate from "./pages/Admin/UserUpdate.jsx";
+import Search from "./pages/Search.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -55,6 +56,7 @@ const router = createBrowserRouter(
       <Route path="/movies" element={<Movies />} />
       {/* <Route path="/movies" element={<Movies2 />} /> */}
       <Route path="/movie/:id" element={<Movie />} />
+      <Route path="/search" element={<Search />} />
 
       <Route path="" element={<AdminRoute />}>
         <Route path="/admin/movielist" element={<MovieList />} />

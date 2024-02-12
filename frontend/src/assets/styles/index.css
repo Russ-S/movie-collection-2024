@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+  color: #000;
+}
 main {
   min-height: 86vh;
 }
@@ -39,7 +43,25 @@ main {
   color: #000;
   border: 1px solid #000;
 }
-
+.searchForm {
+  position: relative;
+  width: auto;
+  text-align: center;
+  right: 35px;
+}
+.searchForm input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 12px;
+  outline: none;
+}
+.searchForm button {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  background: transparent;
+  border: none;
+}
 .mainTitle {
   color: #fff;
   font-size: 48px;
@@ -108,8 +130,9 @@ main {
 }
 
 .card {
+  position: relative;
   width: 375px;
-  height: 100px;
+  height: 110px;
   margin: 10px;
   border: 2px solid #ededed;
   cursor: pointer;
@@ -123,14 +146,14 @@ main {
 }
 
 .card-year {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
   font-size: 17px;
   font-weight: 600;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 1rem;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .cardFooter {
   position: absolute;
@@ -189,3 +212,36 @@ main {
     max-width: 1600px;
   }
 } */
+.searchResults {
+  flex: 1;
+  height: 100%;
+  background-color: rgb(233, 238, 233);
+  color: #000;
+  padding: 1rem;
+  border-radius: 10px;
+  align-items: center;
+}
+.searchBox {
+  border-radius: 10px;
+  outline: none;
+  margin-right: 20px;
+  width: 80%;
+}
+.searchResultCard {
+  position: relative;
+  width: 260px;
+  height: 325px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+.movieCast {
+  font-size: 14px;
+  color: rgb(189, 30, 117);
+  font-weight: 600;
+}
+.cardFooter {
+  position: absolute;
+  bottom: 0;
+}
